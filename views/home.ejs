@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= locals.title%>
+    </title>
+    <script src="https://kit.fontawesome.com/2572eefa21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <h1>
+        <i class="fas fa-archive"></i>
+        My Contact List !!</h1>
+        <div class="sup">
+    <ul>
+    <% for(let i of contact_lis){%>
+        <div class="contact">
+        <li>
+            <p><%= i.name %></p>
+            <p class="second"><%= i.phone %></p>
+        </li>
+    </div>
+    <div class="delete-contact">
+        <a href="/delete-contact/?phone=<%= i.phone%>&&name=<%= i.name%>">
+            <i class="fas fa-archive"></i>
+        </a>
+    </div>
+    <%}%>
+    </ul></div>
+    <form action="/contact-list" method="post" >
+        <input type="text" placeholder="pls enter you name" required name="name">
+        <input type="number" placeholder="pls enter you phone nos" required name="phonenos">
+        <button type="submit" >add contact</button>
+    </form>
+
+    <!-- the below script is added to show the example of how static files are linked it 
+        was linked using app.use(express.static('assets'));
+    
+    -->
+    <script src="/js/home.js"></script>
+</body>
+</html>
